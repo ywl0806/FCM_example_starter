@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getToken, Messaging } from "firebase/messaging";
+import { getMessaging, getToken } from "firebase/messaging";
 
 const firebaseConfig = {
   /**
@@ -11,8 +11,8 @@ const firebaseConfig = {
 
 export const initFirebase = () => initializeApp(firebaseConfig);
 
-export const requestForToken = (messaging: Messaging) => {
-  return getToken(messaging, {
+export const requestForToken = () => {
+  return getToken(getMessaging(), {
     vapidKey: "プロジェクトの設定 -> Cloud Messaging -> ウェブの構成 -> 鍵ペア",
   });
 };
